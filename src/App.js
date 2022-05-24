@@ -9,6 +9,9 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
 
+  const percentageOfChecked =
+    (100 / todos.length) * todos.filter((todo) => todo.isChecked).length;
+
   function addNewTodo() {
     if (newTodo !== '') {
       setTodos((prevTodo) => {
@@ -59,12 +62,6 @@ function App() {
     });
   }
 
-  // function showFinishedAmount() {
-  //   const finished = todos.filter((todo) => todo.isChecked);
-  //   const percentage = Math.round(todos.length / finished.length);
-  //   return percentage;
-  // }
-
   return (
     <div className="App">
       <h1 className="app__title">TODOLIST</h1>
@@ -79,7 +76,7 @@ function App() {
         deleteHandler={deleteTodo}
         changeHandler={changeTodo}
       />
-      <Bottom removeHandler={removeChecked} />
+      <Bottom removeHandler={removeChecked} percentage={percentageOfChecked} />
     </div>
   );
 }

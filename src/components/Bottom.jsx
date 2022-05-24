@@ -4,7 +4,10 @@ export default function Bottom(props) {
   return (
     <div className="bottom">
       <div className="bottom__done">
-        <div className="bottom__done-amount" style={{ width: 20 }}></div>
+        <div
+          className="bottom__done-amount"
+          style={{ width: `${props.percentage}%` }}
+        ></div>
         <span>is done</span>
       </div>
       <button
